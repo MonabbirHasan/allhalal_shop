@@ -1,0 +1,25 @@
+.feature_card{
+    padding: 10px;
+    font-family: cursive;
+}
+.feature_card .feature_card_item{
+    padding: 15px;
+    background: linear-gradient(to right, #eff0f2, #fefefe);
+    box-shadow: 5px 0 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #fff;
+    border-radius: 10px;
+}
+.feature_card .feature_card_item h3{
+    text-transform: capitalize;
+    font-size: 20px;
+    text-align: left;
+    color: #444;
+    font-weight: normal;
+}
+.feature_card .feature_card_item h1{
+    text-transform: capitalize;
+    font-size: 24px;
+    text-align: left;
+    color: #444;
+    font-weight: 600;
+}

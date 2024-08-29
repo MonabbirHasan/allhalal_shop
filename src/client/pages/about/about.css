@@ -1,0 +1,102 @@
+.about_page {
+    padding: 10px;
+    width: 100%;
+}
+
+.about_page .about_wrapper {
+    padding: 0;
+}
+
+.about_page .about_wrapper .founder_profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.about_page .about_wrapper .founder_profile_wrapper {
+    padding: 10px;
+    /* background: #fff; */
+    text-align: center;
+    /* box-shadow: -2px -2px 5px #eee, 2px 2px 5px #eee; */
+}
+
+.about_page .about_wrapper .founder_profile_wrapper .founder_social span svg {
+    color: white;
+}
+
+.about_page .about_wrapper .founder_profile_wrapper .founder_social span svg:hover {
+    color: black;
+}
+
+.about_page .about_wrapper .founder_profile_wrapper .founder_social {
+    position: absolute;
+    bottom: 1%;
+    opacity: 0;
+    transition: 0.5s;
+    padding: 45px 0;
+    background-color: green;
+    border-start-end-radius: 20px;
+    border-top-left-radius: 20px;
+}
+
+.about_page .about_wrapper .founder_profile_wrapper:hover .founder_social {
+    opacity: 1;
+    bottom: 3%;
+}
+
+.about_page .about_wrapper .founder_profile img {
+    width: 200px;
+    height: 200px;
+    border-radius: 100%;
+    position: relative;
+    cursor: pointer;
+    border-radius: 5px;
+    /* background: linear-gradient(to right, #eff0f2, #fefefe);
+    box-shadow: 5px 0 8px rgba(0, 0, 0, 0.2);
+    border: 2px solid #fff; */
+}
+
+.about_page .about_wrapper .founder_profile p {
+    text-transform: capitalize;
+    font-weight: 500;
+    color: white;
+    font-size: 18px;
+    margin: 0;
+    padding: 0;
+}
+
+.about_page .about_wrapper .founder_profile small {
+    text-align: center;
+    color: white;
+}
+
+
+/* about_content */
+
+.about_page .about_content {
+    padding: 0;
+}
+
+.about_page .about_content h1,
+h5 {
+    color: #444;
+}
+
+.about_page .about_content ul li {
+    padding: 5px 0;
+    text-transform: capitalize;
+    font-size: 14px;
+    color: gray;
+}
+
+.about_page .about_our_values {
+    padding: 5px 0;
+}
+
+.about_page .about_our_values ul li {
+    padding: 5px 0;
+    text-transform: capitalize;
+    font-size: 14px;
+    color: gray;
+}

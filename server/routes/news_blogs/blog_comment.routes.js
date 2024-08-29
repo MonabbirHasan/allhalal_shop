@@ -1,0 +1,12 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const BlogCommentController = require("../../controllers/news_blogs/blog_comment.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", BlogCommentController.all_blog_comment);
+router.post("/", BlogCommentController.create_blog_comment);
+router.get("/:id", BlogCommentController.single_blog_comment);
+router.get("/find/:id", BlogCommentController.find_blog_comment);
+router.patch("/:id", BlogCommentController.update_blog_comment);
+router.delete("/:id", BlogCommentController.delete_blog_comment);
+module.exports = router;

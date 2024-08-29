@@ -1,0 +1,35 @@
+.ui_header header {
+    /* border-bottom: 2px solid #eee; */
+    padding: 0 5px 5px 5px;
+    width: 100%;
+}
+
+.ui_header header .front_logo {
+    padding: 0;
+    cursor: pointer;
+}
+
+.ui_header header .front_logo h3 {
+    padding: 0;
+    text-transform: capitalize;
+    font-weight: 900;
+    font-family: thaoma;
+}
+
+.ui_header header .front_logo h3 span {
+    color: green;
+}
+
+.ui_header header .front_navigation a {
+    text-decoration: none;
+    color: black;
+    font-weight: 500;
+    text-transform: capitalize;
+    padding: 5px;
+}
+
+.ui_header header .front_navigation a:hover {
+    color: white;
+    border-radius: 5px;
+    background: black;
+}

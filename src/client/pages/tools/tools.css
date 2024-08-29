@@ -1,0 +1,48 @@
+.ai_tools_page {
+  padding: 5px;
+}
+.ai_tools_page .ai_tools_page_wrapper {
+  display: flex;
+  gap: 10px;
+}
+.ai_tool_menu {
+  /* width: 250px; */
+  height: 100vh;
+  overflow: hidden;
+  overflow-y: scroll;
+  transition: 0.5s;
+  flex-basis: 20%;
+  padding: 10px;
+  background-color: var(--light-bg);
+  border-color: var(--light-bg-dark-shadow);
+  box-shadow: 3px 3px 6px var(--light-bg-dark-shadow),
+    -3px -3px 6px var(--light-bg-light-shadow);
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+.ai_tool_fragment_board {
+  flex-basis: 90%;
+  padding: 10px;
+  background-color: var(--light-bg);
+  border-color: var(--light-bg-dark-shadow);
+  box-shadow: 3px 3px 6px var(--light-bg-dark-shadow),
+    -3px -3px 6px var(--light-bg-light-shadow);
+  border-radius: 10px;
+  border: 1px solid #fff;
+}
+.ai_tool_menu::-webkit-scrollbar {
+  width: 0px;
+  background-color: white;
+  border-radius: 10px;
+  transition: width 3.43 cubic-bezier(1, 0, 0, 1);
+}
+.ai_tool_menu:hover::-webkit-scrollbar {
+  width: 8px;
+  transition: width cubic-bezier(1, 0, 0, 1);
+}
+.ai_tool_menu::-webkit-scrollbar-thumb {
+  width: 5px;
+  background-color: #232;
+  border-radius: 10px;
+  transition: 0.5s;
+}

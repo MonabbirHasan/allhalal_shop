@@ -1,0 +1,80 @@
+.blog_details_page {
+    padding: 30px 0;
+}
+
+.blog_details_page .blog_details_wrapper {
+    padding: 5;
+}
+
+.blog_details_page .blog_details_wrapper .blog_details_title {
+    padding: 15px 0;
+}
+
+.blog_details_page .blog_details_wrapper .blog_details_author {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blog_details_page .blog_details_wrapper .blog_details_thumbnail {
+    padding: 10px 0;
+}
+
+.blog_details_page .blog_details_wrapper .blog_details_thumbnail img {
+    border-radius: 5px;
+    width: 100%;
+    height: 80vh;
+}
+
+.blog_details_page .blog_details_wrapper .blog_details_author p {
+    margin: 0;
+    padding: 0;
+    text-transform: capitalize;
+    font-weight: 600;
+    color: #444;
+}
+
+.blog_details_page .blog_details_wrapper .blog_details_author small {
+    text-transform: capitalize;
+    color: gray;
+    margin: 0;
+    padding: 0;
+}
+
+.blog_details_page .blog_details_wrapper .blog_details {
+    padding: 10px 0;
+}
+
+.blog_details_page .blog_details_wrapper .blog_details p {
+    line-height: 30px;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    font-size: 14px;
+    color: #444;
+}
+
+
+/* blog_details_comment */
+
+.blog_details_comment {
+    padding: 20px 0;
+}
+
+.blog_details_comment .blog_comment_form {
+    display: inline-block;
+    margin-top: 30px;
+}
+
+.blog_details_comment .comments_list {
+    padding: 5px;
+}
+
+.blog_details_comment .comments_list .comment_item {
+    padding: 10px 0;
+    width: 300px;
+}
+
+.blog_details_page .blog_details_comment .comment_title {
+    font-size: 23px;
+    text-transform: capitalize;
+    color: #444;
+}

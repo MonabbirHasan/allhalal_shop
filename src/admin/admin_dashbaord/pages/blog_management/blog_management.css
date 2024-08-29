@@ -1,0 +1,13 @@
+.blog_management {
+    padding: 30px 0;
+}
+
+.blog_management .blog_management_form,
+.blog_management_table {
+    background: #e4ebf5;
+    /* background: #e4ebf5;
+    box-shadow: 2px 2px 10px #bec8e4, inset -3px -9px 5px #e4ebf5, inset -3px -9px 5px #bec8e4;
+    border: #e4ebf5;
+    border-radius: 10px; */
+    margin-top: 10px;
+}

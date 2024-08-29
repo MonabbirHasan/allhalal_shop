@@ -1,0 +1,9 @@
+.page-link {
+    background-color: transparent;
+    color: black;
+}
+
+.pagination_component .active {
+    background-color: var(--bs-body-bg);
+    border-radius: 10px;
+}

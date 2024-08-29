@@ -1,0 +1,99 @@
+/* 
+  ##Device = Desktops
+  ##Screen = 1281px to higher resolution desktops
+*/
+
+@media (min-width: 1281px) {}
+
+
+/* 
+    ##Device = Laptops, Desktops
+    ##Screen = B/w 1025px to 1280px
+  */
+
+@media (min-width: 1025px) and (max-width: 1280px) {
+    /* MARKET FRONT ApplicationMain UI */
+    .ApplicationMain .app_main_wrapper .shop_item_wrapper .shop_item h3 {
+        font-size: 12px !important;
+    }
+    .ApplicationMain .app_main_wrapper .shop_item_wrapper {
+        grid-template-columns: auto auto auto auto auto !important;
+    }
+}
+
+
+/* 
+    ##Device = Tablets, Ipads (portrait)
+    ##Screen = B/w 768px to 1024px
+  */
+
+@media (min-width: 768px) and (max-width: 1024px) {}
+
+
+/* 
+    ##Device = Tablets, Ipads (landscape)
+    ##Screen = B/w 768px to 1024px
+  */
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    /* MARKET FRONT ApplicationMain UI */
+    .ApplicationMain .app_main_wrapper .shop_item_wrapper .shop_item h3 {
+        font-size: 12px !important;
+    }
+    .ApplicationMain .app_main_wrapper .shop_item_wrapper {
+        grid-template-columns: auto auto auto auto !important;
+    }
+}
+
+
+/* 
+    ##Device = Low Resolution Tablets, Mobiles (Landscape)
+    ##Screen = B/w 481px to 767px
+  */
+
+@media (min-width: 481px) and (max-width: 767px) {
+    /* MARKET FRONT ApplicationMain UI */
+    .ApplicationMain .app_main_wrapper .shop_item_wrapper .shop_item svg {
+        font-size: 30px !important;
+    }
+    .ApplicationMain .app_main_wrapper .shop_item_wrapper .shop_item h3 {
+        font-size: 12px !important;
+    }
+    .ApplicationMain .app_main_wrapper .shop_item_wrapper {
+        grid-template-columns: auto auto auto !important;
+    }
+}
+
+
+/* 
+    ##Device = Most of the Smartphones Mobiles (Portrait)
+    ##Screen = B/w 320px to 479px
+  */
+
+@media (min-width: 320px) and (max-width: 480px) {
+    /* MARKET FRONT ApplicationMain UI */
+    .ApplicationMain {
+        /* margin-left: px; */
+        margin-left: 50px;
+        display: flex!important;
+        justify-content: center!important;
+        align-items: center!important;
+    }
+    .ApplicationMain .store_item {
+        width: 170px !important;
+        margin: auto;
+    }
+    .ApplicationMain .app_main_wrapper .shop_item_wrapper .shop_item svg {
+        font-size: 20px !important;
+    }
+    .ApplicationMain .app_main_wrapper .shop_item_wrapper .shop_item h3 {
+        font-size: 12px !important;
+    }
+    .ApplicationMain .app_main_wrapper .shop_item_wrapper {
+        grid-template-columns: auto auto !important;
+    }
+    /* UI HEADER RESPONSIVE */
+    .ui_header {
+        width: 370px !important;
+    }
+}

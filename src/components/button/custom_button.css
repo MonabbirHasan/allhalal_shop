@@ -1,0 +1,15 @@
+.custom_button_components {
+    padding: 0;
+}
+
+.custom_button_components #custom_button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: dodgerblue;
+    color: white;
+    text-transform: capitalize;
+    box-shadow: -2px -2px 5px #eee,2px 2px 5px #eee;
+    font-weight: 500;
+    cursor: pointer;
+}

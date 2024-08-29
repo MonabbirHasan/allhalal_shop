@@ -1,0 +1,42 @@
+.contact_page {
+    padding: 40px 0;
+    width: 100%;
+}
+
+.contact_page .contact_wrapper {
+    padding: 5px;
+}
+
+.contact_page .contact_wrapper .contact_left {
+    padding: 10px;
+}
+
+.contact_page .contact_wrapper .contact_left h3 {
+    text-transform: uppercase;
+    color: #444;
+    padding: 10px 0;
+    font-size: 2rem;
+}
+
+
+/* contact_right */
+
+.contact_page .contact_wrapper {
+    padding: 5px;
+}
+
+.contact_page .contact_wrapper .contact_right {
+    padding: 10px;
+}
+
+.contact_page .contact_wrapper .contact_right h3 {
+    text-transform: uppercase;
+    color: #444;
+    padding: 10px 0;
+    font-size: 2rem;
+}
+
+.contact_page .contact_info {
+    display: grid;
+    gap: 10px;
+}

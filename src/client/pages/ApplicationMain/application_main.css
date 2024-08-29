@@ -1,0 +1,57 @@
+:root {
+    --bg-color: #faa79f;
+    --white: #ffffff;
+}
+
+.ApplicationMain {
+    padding: 10px;
+    background-color: #e4ebf5;
+}
+
+.ApplicationMain .app_main_wrapper {
+    padding: 5px;
+}
+
+
+/**************************
+ shop_item_wrapper start
+**************************/
+
+.ApplicationMain .app_main_wrapper .shop_item_wrapper {
+    display: grid;
+    grid-template-columns: auto repeat(5, auto);
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.ApplicationMain .store_item {
+    height: 180px;
+    width: 200px;
+    border: 1px solid #ffffff;
+}
+
+
+/* 92818F */
+
+
+/* FDEDE3 */
+
+
+/* E3E1FC */
+
+
+/* FDDFF6 */
+
+
+/* 913D46 */
+
+
+/* FAA79F */
+
+
+/* 190052 */
+
+
+/* D6DFEF */
