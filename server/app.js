@@ -10,6 +10,7 @@ const app = express();
 // APPLICATION ROUTE PATH
 //=========================
 const BlogCategoryRouter = require("./routes/news_blogs/blog_category.routes");
+const BlogReactionRouter = require("./routes/news_blogs/blog_reaction.routes");
 const BlogCommentRouter = require("./routes/news_blogs/blog_comment.routes");
 const BlogViewRouter = require("./routes/news_blogs/blog_views.routes");
 const BlogsRouter = require("./routes/news_blogs/blogs.routes");
@@ -36,6 +37,7 @@ app.get("/", (req, res) => {
 //============================
 // ALL APPLICATION ROUTE HERE
 //============================
+app.use("/api/blog/reaction", BlogReactionRouter);
 app.use("/api/blog/category", BlogCategoryRouter);
 app.use("/api/blog/comments", BlogCommentRouter);
 app.use("/api/platform/users", UsersRouter);

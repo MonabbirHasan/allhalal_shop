@@ -13,6 +13,8 @@ const Comments = ({
   onChange,
   value,
   CloseCommentInput,
+  add_likes,
+  add_dislike,
 }) => {
   const [ReplyId, setReplyId] = useState(null);
   const [isOpenComment, setIsOpenComment] = useState(false);
@@ -43,15 +45,25 @@ const Comments = ({
             setIsOpenComment(true);
             setReplyId(comment.blog_comment_id);
           }}
-          className="border-0 _cL4RU    _CWiZp _39_ND _EotAP "
+          className="border-0 _cL4RU _CWiZp _39_ND _EotAP "
         >
           Reply
         </button>
-        <Button depressed={true} rounded={true} size="small">
+        <Button
+          depressed={true}
+          rounded={true}
+          size="small"
+          onClick={add_likes}
+        >
           <ThumbUpAlt htmlColor="green" fontSize="small" />
-          <small>32</small>
+          <small>{comment.reaction_count}</small>
         </Button>
-        <Button depressed={true} rounded={true} size="small">
+        <Button
+          depressed={true}
+          rounded={true}
+          size="small"
+          onClick={add_dislike}
+        >
           <small>3</small>
           <ThumbDownAlt htmlColor="orangered" fontSize="small" />
         </Button>
@@ -68,7 +80,9 @@ const Comments = ({
               add_reply={add_reply}
               onChange={onChange}
               value={value}
-              OpenComment={CloseCommentInput}
+              CloseCommentInput={CloseCommentInput}
+              add_likes={add_likes}
+              add_dislike={add_dislike}
             />
           ))}
         </div>
@@ -142,6 +156,8 @@ Comments.propTypes = {
   onChange: PropTypes.func.isRequired,
   value: PropTypes.string.isRequired,
   CloseCommentInput: PropTypes.func.isRequired, // Ensure prop name is consistent
+  add_likes: PropTypes.func.isRequired,
+  add_dislike: PropTypes.func.isRequired,
 };
 
 export default Comments;

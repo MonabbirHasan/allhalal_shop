@@ -60,3 +60,12 @@ body::-webkit-scrollbar-thumb {
   border: 1px solid #ffffff;
   padding: 20px;
 }
+/* quill editor styels */
+.ql-toolbar.ql-snow{
+  /* border: none!important; */
+  border-bottom: 1px solid #fff!important;
+  border-radius: 10px;
+}
+.ql-container.ql-snow{
+  border: none!important;
+}

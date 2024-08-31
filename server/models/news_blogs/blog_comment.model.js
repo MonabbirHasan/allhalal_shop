@@ -11,7 +11,46 @@ class BlogCommentModel {
   //FIND BLOGS COMMENT MODEL
   //===========================
   static find_blog_comment_model(id, callback) {
-    const sql = `SELECT c.blog_comment_id,c.blog_comment_author,c.blog_comment_content,c.blog_comment_post_id,c.blog_comment_is_reply,c.blog_comment_date,c.status,u.user_id,u.username,u.email,u.phone,u.is_online,u.is_active FROM blog_comments AS c JOIN users AS u ON c.blog_comment_author=u.user_id WHERE blog_comment_post_id=? ORDER BY create_at ASC`;
+    const sql = `SELECT 
+      c.blog_comment_id,
+      c.blog_comment_author,
+      c.blog_comment_content,
+      c.blog_comment_post_id,
+      c.blog_comment_is_reply,
+      c.blog_comment_date,
+      c.status,
+      u.user_id,
+      u.username,
+      u.email,
+      u.phone,
+      u.is_online,
+      u.is_active,
+      br.reaction_id,
+      COUNT(br.reaction_id) AS reaction_count
+  FROM 
+      blog_comments AS c
+  JOIN 
+      users AS u ON c.blog_comment_author = u.user_id
+  LEFT JOIN 
+      blog_reactions AS br ON c.blog_comment_id = br.comment_id
+  WHERE 
+      c.blog_comment_post_id = ?
+  GROUP BY 
+      c.blog_comment_id, 
+      c.blog_comment_author, 
+      c.blog_comment_content, 
+      c.blog_comment_post_id, 
+      c.blog_comment_is_reply, 
+      c.blog_comment_date, 
+      c.status, 
+      u.user_id, 
+      u.username, 
+      u.email, 
+      u.phone, 
+      u.is_online, 
+      u.is_active
+  ORDER BY 
+      c.blog_comment_date ASC`;
     db.query(sql, [id], callback);
     const sql2 = `WITH RECURSIVE CommentTree AS (
     -- Select the root comments (parent comments with no parent, i.e., blog_comment_is_reply = 0)

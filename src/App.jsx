@@ -27,8 +27,8 @@ import {
   AdminDashboardSidebar,
 } from "./admin/index";
 import SignUp from "./authentication/signup/SignUp";
-import { ToastContainer } from "react-toastify";
 import SignIn from "./authentication/signin/SignIn";
+import { ToastContainer } from "react-toastify";
 const App = () => {
   // useEffect(() => {
   //   overrideThemeVariables({

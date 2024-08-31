@@ -35,11 +35,17 @@ import {
   StoreOutlined,
   VisibilitySharp,
 } from "@mui/icons-material";
-import { UserDashboard, UserBlogs, BlogViews, BlogComment } from "../../index";
+import {
+  UserDashboard,
+  UserBlogs,
+  BlogViews,
+  BlogComment,
+  Profile,
+} from "../../index";
 import { user_shopes } from "../../../../utils/static/user_shopes";
 import { LazyLoadImage } from "react-lazy-load-image-component";
-import sidebar_ads from "../../../../assets/img/ads.jpg";
 import { AuthContext } from "../../../../context/AuthContext";
+import sidebar_ads from "../../../../assets/img/ads.jpg";
 const UserDashboardSidebar = () => {
   const { login, isAuthenticate, logout } = useContext(AuthContext);
   const navigate = useNavigate();
@@ -487,6 +493,8 @@ const UserDashboardSidebar = () => {
         <BlogViews />
       ) : StatePage === "user_blogs_comment" ? (
         <BlogComment />
+      ) : StatePage === "my_profile" ? (
+        <Profile />
       ) : (
         "page not found"
       )}

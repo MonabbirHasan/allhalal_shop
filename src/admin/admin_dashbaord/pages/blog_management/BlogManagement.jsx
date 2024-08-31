@@ -12,8 +12,9 @@ import {
 } from "@mui/icons-material";
 import { FormControl, Stack } from "@mui/material";
 import ApiClient from "../../../../utils/apiClient/ApiClient";
-import { toast } from "react-toastify";
 import { AuthContext } from "../../../../context/AuthContext";
+import { toast } from "react-toastify";
+import ReactQuill from "react-quill";
 const BlogManagement = () => {
   const { AuthUser } = useContext(AuthContext);
   const current_user = AuthUser.data.user.user_id;
@@ -39,6 +40,47 @@ const BlogManagement = () => {
   // INITIALIZE CLIENT API ROOT
   /////////////////////////////////
   const ClientApi = new ApiClient(import.meta.env.VITE_API_ROOT_URI);
+  /////////////////////////////////
+  // INITIALIZE QUIL EDITOR
+  /////////////////////////////////
+  const modules = {
+    toolbar: [
+      [{ header: [1, 2, 3, 4, 5, 6, false] }],
+      ["bold", "italic", "underline", "strike", "blockquote"],
+      [
+        { list: "ordered" },
+        { list: "bullet" },
+        { indent: "-1" },
+        { indent: "+1" },
+      ],
+      ["link", "image", "video"],
+      [{ color: [] }, { background: [] }], // dropdown with defaults from theme
+      [{ font: [] }],
+      [{ align: [] }],
+      ["code-block"],
+      ["clean"], // remove formatting button
+    ],
+  };
+
+  const formats = [
+    "header",
+    "bold",
+    "italic",
+    "underline",
+    "strike",
+    "blockquote",
+    "list",
+    "bullet",
+    "indent",
+    "link",
+    "image",
+    "video",
+    "color",
+    "background",
+    "font",
+    "align",
+    "code-block",
+  ];
   // POST VALIDATION
   const validate = () => {
     let errors = {};
@@ -253,6 +295,9 @@ const BlogManagement = () => {
     fetch_post();
   };
   const totalPages = Math.ceil(totalItems / itemsPerPage);
+  useEffect(() => {
+    console.log(PostDetails);
+  }, [PostDetails]);
   // <ThreeDots
   // visible={true}
   // height="80"
@@ -341,11 +386,20 @@ const BlogManagement = () => {
               {/* BLOG DESCRIPTION */}
               <FormControl fullWidth>
                 <Form.Label>Blog Description</Form.Label>
-                <Form.Control
+                {/* <Form.Control
                   onChange={(e) => setPostDetails(e.target.value)}
-                  value={PostDetails}
+                  value={denge}
                   as="textarea"
                   className="global_input_shadow"
+                /> */}
+                <ReactQuill
+                  className="global_input_shadow border-0 rounded-3"
+                  bounds={true}
+                  modules={modules}
+                  formats={formats}
+                  theme="snow"
+                  value={PostDetails}
+                  onChange={setPostDetails}
                 />
                 {error.PostDetails && error_element(error.PostDetails)}
               </FormControl>

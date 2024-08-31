@@ -4,7 +4,7 @@ import { Container, Form, Modal } from "react-bootstrap";
 import "./blog_details.css";
 const Header = lazy(() => import("../../components/common/header/Header"));
 const Footer = lazy(() => import("../../components/common/footer/Footer"));
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import {
   Avatar,
   Button,
@@ -31,11 +31,13 @@ import {
 } from "@mui/icons-material";
 import ApiClient from "../../../utils/apiClient/ApiClient";
 import { AuthContext } from "../../../context/AuthContext";
-import { toast } from "react-toastify";
 import Comments from "../../components/comments/Comments";
+import BlogReader from "../../components/BlogReader";
+import { toast } from "react-toastify";
 const BlogDetails = () => {
   const location = useLocation();
   const { AuthUser } = useContext(AuthContext);
+  const navigate = useNavigate();
   let post_id = window.location.href.split("?id=")[1];
   // post_id = window.location.href.split("id=");
   const [AllComments, setAllComments] = useState([]);
@@ -45,10 +47,18 @@ const BlogDetails = () => {
   const [isOpenComment, setIsOpenComment] = useState(false);
   const [comments, setComment] = useState("");
   const [reply_comment, setReplyComment] = useState("");
+  const [isLike, setIsLike] = useState("");
   const handleShow = () => setVisible(true);
   const handleClose = () => setVisible(false);
   const TOKEN = import.meta.env.VITE_API_ACCESS_KEY;
-  const [CurrentUser] = useState(AuthUser.data.user);
+  const [CurrentUser, setCurrentUser] = useState();
+  useEffect(() => {
+    if (!AuthUser) {
+      return navigate("/signin");
+    } else {
+      setCurrentUser(AuthUser.data.user);
+    }
+  }, [AuthUser]);
   /////////////////////////////////
   // INITIALIZE CLIENT API ROOT
   /////////////////////////////////
@@ -75,19 +85,30 @@ const BlogDetails = () => {
   // POST COMMENTS
   /////////////////////
   const post_comment = async (post_id) => {
+    if (!AuthUser) {
+      return navigate("/signin");
+    }
     try {
-      const data = {
-        blog_comment_author: CurrentUser.user_id,
-        blog_comment_content: comments,
-        blog_comment_post_id: post_id,
-        blog_comment_is_reply: 0,
-        status: 1,
-      };
-      const response = await ClientApi.create(`api/blog/comments`, data, TOKEN);
-      if (response.status === 201) {
-        setComment("");
-        fetch_comment();
-        toast.success("comment success🎉🎉🎉F");
+      if (comments !== "") {
+        const data = {
+          blog_comment_author: CurrentUser.user_id,
+          blog_comment_content: comments,
+          blog_comment_post_id: post_id,
+          blog_comment_is_reply: 0,
+          status: 1,
+        };
+        const response = await ClientApi.create(
+          `api/blog/comments`,
+          data,
+          TOKEN
+        );
+        if (response.status === 201) {
+          setComment("");
+          fetch_comment();
+          toast.success("comment success🎉🎉🎉");
+        }
+      } else {
+        toast.error("Please A Comment😒😒😒");
       }
     } catch (error) {
       console.log(error);
@@ -97,23 +118,98 @@ const BlogDetails = () => {
   // ADD REPLY COMMENTS
   //////////////////////
   const add_reply = async (parent_id) => {
+    if (!AuthUser) {
+      return navigate("/signin");
+    }
     try {
-      const data = {
-        blog_comment_author: CurrentUser.user_id,
-        blog_comment_content: reply_comment,
-        blog_comment_post_id: post_id,
-        blog_comment_is_reply: parent_id,
-        status: 1,
-      };
-      const response = await ClientApi.create(`api/blog/comments`, data, TOKEN);
-      if (response.status === 201) {
-        setIsOpenComment(false);
-        setReplyComment("");
-        fetch_comment();
-        toast.success("reply added success🎉🎉🎉F");
+      if (reply_comment !== "") {
+        const data = {
+          blog_comment_author: CurrentUser.user_id,
+          blog_comment_content: reply_comment,
+          blog_comment_post_id: post_id,
+          blog_comment_is_reply: parent_id,
+          status: 1,
+        };
+        const response = await ClientApi.create(
+          `api/blog/comments`,
+          data,
+          TOKEN
+        );
+        if (response.status === 201) {
+          setIsOpenComment(false);
+          setReplyComment("");
+          fetch_comment();
+          toast.success("reply added success🎉🎉🎉F");
+        }
+      } else {
+        toast.error("please add reply😒😒");
       }
     } catch (error) {
       console.log(error);
+    }
+  };
+  ///////////////////////////
+  // ADD COMMENTS REACTIONS
+  //////////////////////////
+  const add_likes = async (id) => {
+    if (!AuthUser) {
+      return navigate("/signin");
+    }
+    try {
+      fetch_comment();
+      const data = {
+        comment_id: id,
+        user_id: CurrentUser.user_id,
+        reaction_type: "like",
+      };
+      setIsLike("like");
+      const response = await ClientApi.create(`api/blog/reaction`, data, TOKEN);
+      if (response.status === 201) {
+        toast.success("Like Added success🎉🎉🎉");
+      }
+    } catch (error) {
+      if (error.response.status === 409) {
+        const data = {
+          comment_id: id,
+          user_id: CurrentUser.user_id,
+          reaction_type: "like",
+        };
+        const response = await ClientApi.update(
+          `api/blog/reaction/${id}`,
+          data,
+          TOKEN
+        );
+        if (response.status === 200) {
+          toast.success("dislike Added success🎉🎉🎉");
+        }
+        toast.success("Already Liked 😊😊");
+      }
+    }
+  };
+  const add_dislike = async (id) => {
+    if (!AuthUser) {
+      return navigate("/signin");
+    }
+    try {
+      fetch_comment();
+      const data = {
+        comment_id: ReplyId,
+        user_id: CurrentUser.user_id,
+        reaction_type: "dislike",
+      };
+      const response = await ClientApi.update(
+        `api/blog/reaction/${id}`,
+        data,
+        TOKEN
+      );
+      if (response.status === 200) {
+        toast.success("dislike Added success🎉🎉🎉");
+      }
+    } catch (error) {
+      console.log(error);
+      if (error.response.status === 409) {
+        // toast.success("Already disliked 😊😊");
+      }
     }
   };
   //////////////////////
@@ -265,6 +361,10 @@ const BlogDetails = () => {
                 </IconButton>
               </Stack>
             </section>
+            {/* BLOG READER SECTION START HERE */}
+            <section className="blog_details_title">
+              <BlogReader text={`"${SinglePost.blog_description}"`} />
+            </section>
             {/* BLOG TITLE SECTION START HERE */}
             <section className="blog_details_title">
               <h4>{SinglePost.blog_title}</h4>
@@ -398,6 +498,8 @@ const BlogDetails = () => {
                       isOpenComment && ReplyId === item.blog_comment_id
                     }
                     CloseCommentInput={handleCloseComment}
+                    add_likes={() => add_likes(item.blog_comment_id)}
+                    add_dislike={() => add_dislike(item.blog_comment_id)}
                   />
                 );
               })}
