@@ -1,0 +1,9 @@
+.section_title{
+    padding: 10px;
+}
+.section_title .section_title_txt{
+    font-weight: 500;
+    text-transform: capitalize;
+    color: #232;
+    font-size: 20px;
+}

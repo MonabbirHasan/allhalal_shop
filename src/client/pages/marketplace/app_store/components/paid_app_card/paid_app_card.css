@@ -1,0 +1,29 @@
+.paid_app_card {
+  padding: 10px;
+  width: 200px;
+  /* height: 2; */
+  cursor: pointer;
+}
+.paid_app_card .paid_app_card_img_box {
+  padding: 0;
+}
+.paid_app_card .paid_app_card_img {
+  width: 100%;
+  height: 150px;
+  border-radius: 5px;
+}
+.paid_app_card .paid_app_card_name {
+  padding: 5px 0;
+  text-transform: capitalize;
+  color: #232;
+  font-size: 14px;
+}
+.paid_app_card .paid_app_card_footer {
+  display: flex;
+  justify-content: space-between;
+}
+.paid_app_card .paid_app_card_footer span {
+  font-size: 14px;
+  color: #232;
+  font-weight: 500;
+}

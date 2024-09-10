@@ -1,0 +1,12 @@
+.helpcenter {
+  padding: 20px 0;
+}
+.helpcenter .helpcenter_wrapper {
+  padding: 5px;
+}
+.helpcenter .helpcenter_wrapper .helpcenter_grid {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  gap: 20px;
+}

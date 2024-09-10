@@ -17,7 +17,7 @@ import {
   H5,
   Subtitle2,
 } from "ui-neumorphism";
-import { JoinFull } from "@mui/icons-material";
+import { ArrowForward } from "@mui/icons-material";
 const ApplicationMain = () => {
   const navigate = useNavigate();
   //////////////////////////////
@@ -71,12 +71,12 @@ const ApplicationMain = () => {
                       </Subtitle2>
                       <H5
                         style={{
-                          textTransform: "uppercase",
+                          textTransform: "capitalize",
                           fontWeight: "500",
                           color: "#232",
                           margin: 0,
                           padding: 0,
-                          fontSize: "14px",
+                          fontSize: "16px",
                         }}
                       >
                         {items.name}
@@ -87,8 +87,9 @@ const ApplicationMain = () => {
                           spacing={1}
                           alignItems={"center"}
                           justifyContent={"space-between"}
+                          textAlign={'center'}
                         >
-                          <H3 style={{ margin: 0, padding: 0 }}>
+                          <H3 style={{ margin: 0, padding: 0,textAlign:'center' }}>
                             {items.left_icon}
                           </H3>
                           <H5
@@ -97,6 +98,7 @@ const ApplicationMain = () => {
                               padding: 0,
                               fontWeight: "bold",
                               color: "green",
+                              display:'none'
                             }}
                           >
                             حلال
@@ -112,7 +114,10 @@ const ApplicationMain = () => {
                         size="large"
                         onClick={() => routing_controller(items.path)}
                       >
-                        Visit store
+                        <span className="arrow_animation">
+                          <ArrowForward />
+                        </span>
+                        <span className="visit_btn_txt">Visit store</span>
                       </Button>
                     </CardAction>
                   </Card>

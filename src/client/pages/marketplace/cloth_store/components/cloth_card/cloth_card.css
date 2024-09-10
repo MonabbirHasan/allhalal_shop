@@ -1,0 +1,82 @@
+.cloth_card {
+  cursor: pointer;
+  resize: none;
+  user-select: none;
+}
+.cloth_card:hover{
+    border-color: white;
+}
+.cloth_card_header {
+  padding: 5px;
+}
+.cloth_card_body {
+  padding: 1px;
+}
+/* cloth_card_thumbnail */
+.cloth_card_body .cloth_card_thumbnail .card_thumbnail {
+  width: 100%;
+  height: 240px;
+  border-radius: 5px;
+  background-position: center;
+  background-size: cover;
+}
+.cloth_card_body .cloth_card_thumbnail {
+  position: relative;
+}
+.cloth_card_body .cloth_card_thumbnail .price_box {
+  padding: 5px;
+  background-color: #e4ebf5;
+  width: 100px;
+  border-top-right-radius: 20px;
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  border-top: 1px solid #e4ebf5;
+  border-right: 1px solid #e4ebf5;
+  text-align: center;
+}
+.cloth_card_body .cloth_card_thumbnail .price_box span {
+  text-align: center;
+  font-weight: 500;
+  color: #232;
+  padding-right: 5px;
+  font-family: cursive;
+}
+.cloth_card_body .cloth_card_thumbnail .price_box sub {
+  color: orangered;
+}
+/* cloth_card_title */
+.cloth_card_body .cloth_card_title {
+  padding: 10px;
+  position: relative;
+  margin-top: 5px;
+}
+.cloth_card_body .cloth_card_title h4 {
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  font-size: 14px;
+  height: 36px;
+  line-height: 18px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.cloth_card_body .rating_box {
+  position: absolute;
+  right: 10px;
+  bottom: 5px;
+  font-size: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-right: 5px;
+  z-index: 1;
+  border-top-left-radius: 10px;
+}
+.cloth_card_body .rating_box span {
+  color: white;
+}
+/* cloth_card_footer */
+.cloth_card_footer {
+  padding-bottom: 10px;
+}

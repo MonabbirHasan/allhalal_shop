@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { overrideThemeVariables } from "ui-neumorphism";
 import "react-toastify/dist/ReactToastify.css";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "react-multi-carousel/lib/styles.css";
 import "./assets/css/media-query.css";
 import "ui-neumorphism/dist/index.css";
 import "./assets/css/style.css";
@@ -19,6 +20,9 @@ import {
   Faq,
   BlogDetails,
   Tools,
+  HelpCenter,
+  ClothHomePage,
+  ApphHomePage
 } from "./client/pages/index";
 import {
   UserDashboardSidebar,
@@ -49,19 +53,28 @@ const App = () => {
       <Suspense fallback={() => <h1>Loading...</h1>}>
         <BrowserRouter>
           <Routes>
+            <Route path="/news_blog/:slug" element={<BlogDetails />} />
             <Route path="/cookie_policy" element={<CookiePolicy />} />
             <Route path="/help_support" element={<HelpSupport />} />
             <Route path="/privacy_policy" element={<Privacy />} />
+            <Route path="/help_center" element={<HelpCenter />} />
             <Route path="/news_blog" element={<NewsBlog />} />
-            <Route path="/news_blog/:slug" element={<BlogDetails />} />
-            <Route path="/tools" element={<Tools />} />
             <Route path="/" element={<ApplicationMain />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/tools" element={<Tools />} />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<Error404 />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
+            {/* MARKETPLACE ROUTE START HERE */}
+            <Route path="/cloth_store">
+              <Route path="" element={<ClothHomePage />} />
+            </Route>
+            {/* APP STORE ROUTE */}
+            <Route path="/app_store">
+              <Route path="" element={<ApphHomePage />} />
+            </Route>
             {/* USER DASHBOARD PAGE ROUTE START HERE */}
             <Route path="/my_dashboard" element={<UserDashboardSidebar />} />
             {/* VENDORS DASHBOARD PAGE ROUTE START HERE */}

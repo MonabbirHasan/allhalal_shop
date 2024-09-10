@@ -5,7 +5,7 @@
 body {
   margin: 0;
   padding: 0;
-  background-color: #f1f3f5;
+  background-color: #e4ebf5;
   font-family: sans-serif;
 }
 
@@ -60,12 +60,15 @@ body::-webkit-scrollbar-thumb {
   border: 1px solid #ffffff;
   padding: 20px;
 }
+:root{
+  --global_btn_shadow:_cL4RU  _3W7Om _CWiZp _EotAP _3lLt8
+}
 /* quill editor styels */
-.ql-toolbar.ql-snow{
+.ql-toolbar.ql-snow {
   /* border: none!important; */
-  border-bottom: 1px solid #fff!important;
+  border-bottom: 1px solid #fff !important;
   border-radius: 10px;
 }
-.ql-container.ql-snow{
-  border: none!important;
+.ql-container.ql-snow {
+  border: none !important;
 }

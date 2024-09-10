@@ -16,15 +16,18 @@
     margin-bottom: 10px;
 }
 
-.blog_page .blog_banner ._3JvVb ._3waoy {
+._3JvVb ._3waoy {
     border-color: white;
     border-width: 2px;
 }
 
-.blog_page .blog_banner ._3JvVb ._3waoy._3xiPD {
+._3JvVb ._3waoy._3xiPD {
     background-color: white;
 }
-
+._1O7aA._3utEv,
+._3GhlB span {
+    color: white;
+}
 ._3waoy::after {
     top: 50%;
     width: 0%;
@@ -54,12 +57,6 @@
     display: inline-block;
     z-index: 100;
 }
-
-._1O7aA._3utEv,
-._3GhlB span {
-    color: white;
-}
-
 
 /* blog_options */
 

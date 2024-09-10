@@ -1,0 +1,39 @@
+.app_game_card {
+  padding: 10px;
+  width: 250px;
+  position: relative;
+}
+.app_game_card .app_game_card_img_box {
+  position: relative;
+}
+.app_game_card .app_game_card_img {
+  width: 100%;
+  height: 400px;
+  background-position: center;
+  background-size: auto;
+  aspect-ratio: 2;
+  border-radius: 10px;
+}
+.app_game_card .app_game_card_bottom {
+  position: absolute;
+  bottom: 0;
+  left: 10px;
+  clear: both;
+  z-index: 100;
+  display: flex;
+  justify-content: space-around;
+  align-items: safe;
+}
+.app_game_card .app_game_card_bottom p {
+  color: #fff;
+  display: flex;
+}
+.app_game_card .app_game_card_name {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  clear: both;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+}

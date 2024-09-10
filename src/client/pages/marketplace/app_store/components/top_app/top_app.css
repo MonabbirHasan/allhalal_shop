@@ -1,0 +1,36 @@
+.top_app_card {
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 5px;
+}
+.top_app_card .top_app_card_img {
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+}
+.top_app_card .top_app_card_name {
+  padding: 0;
+  margin: 0;
+  font-size: 13px;
+  font-weight: bold;
+  color: #232;
+  text-transform: capitalize;
+}
+.top_app_card .top_app_card_category {
+  padding: 0;
+  margin: 0;
+  font-size: 10px;
+  text-transform: capitalize;
+}
+.top_app_card .top_app_card_ratings {
+  padding: 0;
+  margin: 0;
+  font-size: 12px;
+}
+
+.top_app_card .app_download_btn:hover {
+  color: green;
+  border: 1px solid greenyellow;
+}

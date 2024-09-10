@@ -1,0 +1,54 @@
+.app_home_page {
+  padding: 40px 0;
+}
+.app_home_page .app_home_wrapper {
+  padding: 0;
+}
+.app_home_page .app_store_banner_slider_img {
+  border-radius: 10px;
+}
+.app_home_page .app_home_wrapper .app_category {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 20px;
+}
+.app_home_page .app_home_wrapper .app_category button span {
+  text-transform: capitalize;
+}
+/* app_popular_app */
+.app_home_page .app_home_wrapper .app_popular_app {
+  padding: 0;
+}
+.app_home_page .app_home_wrapper .popular_app_grid {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  gap: 10px;
+}
+.react-multiple-carousel__arrow.react-multiple-carousel__arrow {
+  background-color: white !important;
+  color: black;
+}
+.react-multiple-carousel__arrow::before {
+  font-size: 20px;
+  color: #111;
+  display: block;
+  font-family: revicons;
+  text-align: center;
+  z-index: 2;
+  position: relative;
+}
+/* app_popular_game */
+.app_home_page .app_home_wrapper .app_popular_game {
+  padding: 20px 0;
+}
+/* app_paid_app */
+.app_home_page .app_home_wrapper .app_paid_app {
+  padding: 10px 0;
+}
+.app_home_page .app_home_wrapper .app_paid_app .app_paid_app_grid {
+  display: grid;
+  grid-template-columns: repeat(6, auto);
+  gap: 10px;
+}
