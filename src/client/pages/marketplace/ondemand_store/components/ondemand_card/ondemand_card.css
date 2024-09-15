@@ -1,0 +1,84 @@
+.ondemand_card {
+  padding: 0;
+}
+.ondemand_card .ondemand_card_thumbnail {
+  padding: 0;
+  position: relative;
+}
+.ondemand_card .ondemand_card_thumbnail img {
+  width: 100%;
+  height: 260px;
+  background-position: center;
+  background-size: cover;
+  border-radius: 10px;
+}
+
+.ondemand_card .ondemand_card_thumbnail .badges {
+  padding: 5px;
+  background-color: green;
+  color: white;
+  border: 5px;
+}
+.ondemand_card .ondemand_card_title {
+  padding: 0 10px;
+}
+.ondemand_card .ondemand_card_title p {
+  font-size: 18px;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  transition: all 0.3s;
+}
+.ondemand_card .ondemand_card_price {
+  padding: 0 10px;
+}
+.ondemand_card .ondemand_card_price p {
+  font-size: 18px;
+  margin-bottom: 5px;
+  transition: all 0.3s;
+  font-weight: 500;
+}
+.ondemand_card .ondemand_card_color_palat {
+  padding: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  /* opacity: 0;
+  transition: .5s; */
+}
+/* .ondemand_card:hover .ondemand_card_color_palat{
+    opacity: 1;
+    padding: 10px;
+} */
+.ondemand_card .ondemand_card_color_palat p {
+  padding: 5px;
+  width: 15px;
+  height: 15px;
+  background: var(--i);
+  cursor: pointer;
+  border-radius: 100%;
+  border: 1px solid #fff;
+}
+.ondemand_card .ondemand_card_color_palat p:hover {
+  border-color: var(--i);
+}
+.ondemand_card .ondmand_card_action {
+  background-color: #E4EBF5;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  margin: auto;
+  padding: 0 10px;
+  position: absolute;
+  bottom: -30px;
+  left: 24%;
+  opacity: 0;
+  transition: 0.5s;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top: 1px solid white;
+}
+.ondemand_card:hover .ondmand_card_action {
+  bottom: 0;
+  opacity: 1;
+  transition: 0.5s;
+}

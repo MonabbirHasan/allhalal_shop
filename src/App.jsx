@@ -22,7 +22,11 @@ import {
   Tools,
   HelpCenter,
   ClothHomePage,
-  ApphHomePage
+  ApphHomePage,
+  ArtHomePage,
+  BookHomePage,
+  OnDemandHomePage,
+  HandmadeHomePage,
 } from "./client/pages/index";
 import {
   UserDashboardSidebar,
@@ -32,8 +36,13 @@ import {
 } from "./admin/index";
 import SignUp from "./authentication/signup/SignUp";
 import SignIn from "./authentication/signin/SignIn";
-import { ToastContainer } from "react-toastify";
+import { toast, ToastContainer } from "react-toastify";
 const App = () => {
+  useEffect(() => {
+    if (navigator.onLine === false) {
+      toast.error("You'r Disconnected to the internate");
+    }
+  }, []);
   // useEffect(() => {
   //   overrideThemeVariables({
   //     "--light-bg": "#E9B7B9",
@@ -67,13 +76,29 @@ const App = () => {
             <Route path="/faq" element={<Faq />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
-            {/* MARKETPLACE ROUTE START HERE */}
+            {/* CLOTH STORE ROUTE START HERE */}
             <Route path="/cloth_store">
               <Route path="" element={<ClothHomePage />} />
             </Route>
             {/* APP STORE ROUTE */}
             <Route path="/app_store">
               <Route path="" element={<ApphHomePage />} />
+            </Route>
+            {/* ART STORE ROUTE */}
+            <Route path="/art_store">
+              <Route path="" element={<ArtHomePage />} />
+            </Route>
+            {/* BOOK STORE ROUTE */}
+            <Route path="/book_store">
+              <Route path="" element={<BookHomePage />} />
+            </Route>
+            {/* ONE DEMAND STORE ROUTE */}
+            <Route path="/one_demand_store">
+              <Route path="" element={<OnDemandHomePage />} />
+            </Route>
+            {/* ONE DEMAND STORE ROUTE */}
+            <Route path="/hand_made_store">
+              <Route path="" element={<HandmadeHomePage />} />
             </Route>
             {/* USER DASHBOARD PAGE ROUTE START HERE */}
             <Route path="/my_dashboard" element={<UserDashboardSidebar />} />

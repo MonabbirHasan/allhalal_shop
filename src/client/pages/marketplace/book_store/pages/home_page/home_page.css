@@ -1,0 +1,12 @@
+.book_home_page{
+    padding: 40px 0;
+}
+.book_home_page .book_banner_slider{
+    padding: 0;
+}
+.book_home_page .book_banner_slider .book_banner_slider_img{
+    width: 100%;
+    height: auto;
+    background-position: center;
+    background-size: contain;
+}

@@ -1,19 +1,51 @@
-import React, { memo } from "react";
+import React, { memo, useContext, useEffect } from "react";
 import { Image } from "react-bootstrap";
 import { Button, Card, H5, Typography } from "ui-neumorphism";
 import ads from "../../../assets/img/ads.jpg";
 import halal from "../../../assets/img/halal-label-logo-vector.png";
 import { Stack, Avatar, Divider } from "@mui/material";
 import "./blog_card.css";
-import { AccessTime, Category, LockClock, PunchClock, Timelapse, Timeline, Visibility, Watch } from "@mui/icons-material";
-import { NavLink, useNavigate } from "react-router-dom";
+import { AccessTime, Category, Visibility } from "@mui/icons-material";
+import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthContext";
+import ApiClient from "../../../utils/apiClient/ApiClient";
+import { toast } from "react-toastify";
 const BlogCard = memo((props) => {
   const navigate = useNavigate();
+  const { isAuthenticate, AuthUser } = useContext(AuthContext);
+  /////////////////////////////////
+  // INITIALIZE CLIENT API ROOT
+  /////////////////////////////////
+  const ClientApi = new ApiClient(import.meta.env.VITE_API_ROOT_URI);
+  /*********************
+   * COUNT NEW VIEWS
+   *********************/
+  const count_blog_view = async (postid) => {
+    try {
+      const data = {
+        blog_view_count: 1,
+        blog_view_post_id: postid,
+        blog_view_user_id: AuthUser.data.user.user_id,
+        status: 1,
+      };
+      const response = await ClientApi.create(
+        `api/blog/views`,
+        data,
+        import.meta.env.VITE_API_ACCESS_KEY
+      );
+      if (response.status === 201) {
+        toast.success("views count");
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
   /*********************
    * GENERATE SLUGS
    *********************/
   const slug_generate = (text, route_name, options) => {
     const t = text.replaceAll(" ", "-");
+    count_blog_view(options.post_id)
     return navigate("/" + route_name + "/" + t + `?id=${options.post_id}`);
   };
   return (

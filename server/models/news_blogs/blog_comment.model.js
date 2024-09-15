@@ -51,56 +51,51 @@ class BlogCommentModel {
       u.is_active
   ORDER BY 
       c.blog_comment_date ASC`;
+
+
+      const sql2 = `SELECT 
+      c.blog_comment_id,
+      c.blog_comment_author,
+      c.blog_comment_content,
+      c.blog_comment_post_id,
+      c.blog_comment_is_reply,
+      c.blog_comment_date,
+      c.status,
+      u.user_id,
+      u.username,
+      u.email,
+      u.phone,
+      u.is_online,
+      u.is_active,
+      br.reaction_id,
+      COUNT(br.reaction_id) AS reaction_count
+  FROM 
+      blog_comments AS c
+  JOIN 
+      users AS u ON c.blog_comment_author = u.user_id
+  LEFT JOIN 
+      blog_reactions AS br ON c.blog_comment_id = br.comment_id
+  WHERE 
+      c.blog_comment_post_id = ? 
+  GROUP BY 
+      c.blog_comment_id, 
+      c.blog_comment_author, 
+      c.blog_comment_content, 
+      c.blog_comment_post_id, 
+      c.blog_comment_is_reply, 
+      c.blog_comment_date, 
+      c.status, 
+      u.user_id, 
+      u.username, 
+      u.email, 
+      u.phone, 
+      u.is_online, 
+      u.is_active
+  ORDER BY 
+      c.blog_comment_date ASC`;
+
     db.query(sql, [id], callback);
-    const sql2 = `WITH RECURSIVE CommentTree AS (
-    -- Select the root comments (parent comments with no parent, i.e., blog_comment_is_reply = 0)
-    SELECT 
-        b.blog_comment_id,
-        b.blog_comment_author,
-        b.blog_comment_content,
-        b.blog_comment_is_reply,
-        0 AS depth,
-        b.blog_comment_id AS root_id,
-        u.username AS username
-    FROM 
-        blog_comments AS b
-    JOIN 
-        users AS u ON b.blog_comment_author = u.user_id
-    WHERE 
-        b.blog_comment_is_reply = 0
     
-    UNION ALL
-    
-    -- Recursively select child comments (replies)
-    SELECT 
-        c.blog_comment_id,
-        c.blog_comment_author,
-        c.blog_comment_content,
-        c.blog_comment_is_reply,
-        ct.depth + 1 AS depth,
-        ct.root_id,
-        u.username AS username
-    FROM 
-        blog_comments AS c
-    JOIN 
-        CommentTree AS ct ON c.blog_comment_is_reply = ct.blog_comment_id
-    JOIN 
-        users AS u ON c.blog_comment_author = u.user_id
-)
-SELECT 
-    ct.blog_comment_id,
-    ct.blog_comment_author,
-    ct.blog_comment_content,
-    ct.blog_comment_is_reply,
-    ct.depth,
-    ct.root_id,
-    ct.username
-FROM 
-    CommentTree AS ct
-ORDER BY 
-    ct.root_id,   -- Order by the root comment id first to group the comments under their parent
-    ct.depth,     -- Then order by the depth to ensure parents are listed before children
-    ct.blog_comment_id`;
   }
   //===========================
   //SINGLE BLOGS COMMENT MODEL

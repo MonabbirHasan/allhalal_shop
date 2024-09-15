@@ -4,29 +4,48 @@ const Header = lazy(() => import("../../components/common/header/Header"));
 const Footer = lazy(() => import("../../components/common/footer/Footer"));
 import Pagination from "../../../components/pagination/Pagination";
 import CustomTitle from "../../components/custom_title/CustomTitle";
-import { Search } from "@mui/icons-material";
-import { Card, Carousel, CarouselItem, Button } from "ui-neumorphism";
+import {
+  ArrowCircleRight,
+  ArrowRight,
+  Cloud,
+  CloudCircle,
+  Search,
+} from "@mui/icons-material";
+import {
+  Card,
+  Carousel,
+  CarouselItem,
+  Button,
+  H3,
+  IconButton,
+} from "ui-neumorphism";
 import ApiClient from "../../../utils/apiClient/ApiClient";
 import BlogCard from "../../components/blog_card/BlogCard";
 import { Container, Form } from "react-bootstrap";
-import { Button as MuiBTN, FormControl } from "@mui/material";
+import {
+  Button as MuiBTN,
+  FormControl,
+  Stack,
+  Typography,
+  Box,
+} from "@mui/material";
+import axios from "axios";
 
 const Blogs = () => {
   const TOKEN = import.meta.env.VITE_API_ACCESS_KEY;
   const [AllPost, setAllPost] = useState([]);
   const [AllCategory, setAllCategory] = useState([]);
-
+  const [AllBlogViews, setAllBlogViews] = useState([]);
+  const [weatherData, setWeatherData] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5);
   const [totalItems, setTotalItems] = useState(0);
-
   const [isLoading, setIsLoading] = useState(false);
-
+ 
   /////////////////////////////////
   // INITIALIZE CLIENT API ROOT
   /////////////////////////////////
   const ClientApi = new ApiClient(import.meta.env.VITE_API_ROOT_URI);
-
   //////////////////////
   // GET ALL CATEGORY
   //////////////////////
@@ -73,12 +92,110 @@ const Blogs = () => {
   useEffect(() => {
     fetch_post();
   }, []);
+  //////////////////////////
+  // FETCH ALL BLOGS VIEWS
+  /////////////////////////
+  const fetch_blog_view = async () => {
+    try {
+      const response = await ClientApi.read(
+        `api/blog/views`,
+        import.meta.env.VITE_API_ACCESS_KEY
+      );
+      if (response.status === 200) {
+        console.log(response.data);
+        setAllBlogViews(response.data);
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  useEffect(() => {
+    fetch_blog_view();
+  }, []);
+  ///////////////////////
+  // FETCH WEATHER DATA
+  //////////////////////
+  const fetchWeatherData = async () => {
+    try {
+      const response = await axios.get(
+        `https://api.openweathermap.org/data/2.5/weather?q=${"Dhaka"}&appid=${
+          import.meta.env.VITE_API_WEATHER_KEY
+        }&units=metric`
+      );
+      if (response.status === 200) {
+        setWeatherData(response.data);
+        console.log(weatherData?.sys);
+      }
+    } catch (error) {
+      console.error("Error fetching weather data:", error);
+    }
+  };
+  useEffect(() => {
+    setInterval(() => {
+      fetchWeatherData();
+    }, 1000);
+  }, []);
+
+  const sunriseDate = new Date(weatherData?.sys["sunrise"] * 1000);
+  const sunsetDate = new Date(weatherData?.sys["sunset"] * 1000);
+  // Format the date and time in a human-readable format
+  const formattedSunrise = sunriseDate.toLocaleString("en-US", {
+    timeZone: "Asia/Dhaka",
+    hour12: true,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
+  const formattedSunset = sunsetDate.toLocaleString("en-US", {
+    timeZone: "Asia/Dhaka",
+    hour12: true,
+    hour: "2-digit",
+    minute: "2-digit",
+    second: "2-digit",
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  });
+
   return (
     <>
       <Header />
       <div className="blog_page">
         <Container>
           <div className="blog_wrapper">
+            {/* weather section */}
+            <div className="blog_weather_info">
+              <Card className=" p-2 mb-2">
+                <Stack direction="row" spacing={1} alignItems={"center"}>
+                  <Box>
+                    <img
+                      style={{ width: 30, height: 30 }}
+                      // src="https://img.icons8.com/fluency/48/sun.png"
+                      src="https://img.icons8.com/ios-filled/50/partly-cloudy-night--v1.png"
+                      alt="sun"
+                    />
+                  </Box>
+                  <Typography fontWeight="bold" color="gray">
+                    {weatherData?.name}
+                  </Typography>
+                  <p>Temperature: {weatherData?.main?.temp}°C</p>
+                  <p>Weather: {weatherData?.weather[0]?.description}</p>
+                  <p>Humidity: {weatherData?.main?.humidity}%</p>
+                  <p>Wind Speed: {weatherData?.wind?.speed} m/s</p>
+                  <p>Today: {formattedSunrise.split(",")[0]}</p>
+                  <p>sunrise: {formattedSunrise.split(",")[1]}</p>
+                  <p>sunset: {formattedSunset.split(",")[1]}</p>
+                  <Button active={true} rounded={true}>
+                    <Typography>Weather</Typography>
+                    <CloudCircle />
+                  </Button>
+                </Stack>
+              </Card>
+            </div>
             {/* blog_banner */}
             <div className="blog_banner">
               <Card style={{ padding: 10 }}>
@@ -88,7 +205,6 @@ const Blogs = () => {
                       src="https://t3.ftcdn.net/jpg/04/42/44/98/360_F_442449827_ispo2oI83ffX0TSax4Pgdd7xkqCA5ThA.jpg"
                       alt=""
                     />
-                    {/* <H3>Slide 1</H3> */}
                   </CarouselItem>
                   <CarouselItem style={{ background: "var(--error)" }}>
                     <img
@@ -113,7 +229,7 @@ const Blogs = () => {
             </div>
             {/*  blog_options*/}
             <div className="blog_options">
-              <Card elevation={1} className="global_card_border">
+              {/* <Card elevation={1} className="global_card_border">
                 <div className="category">
                   <Form.Select className="global_input_shadow">
                     <option selected>category</option>
@@ -142,7 +258,7 @@ const Blogs = () => {
                     </MuiBTN>
                   </FormControl>
                 </div>
-              </Card>
+              </Card> */}
             </div>
             {/* blog_item_grid */}
             {AllCategory.map((category) => (
@@ -161,7 +277,11 @@ const Blogs = () => {
                         }/blog_img/${post.blog_thumbnail}`}
                         category={post.blog_category_name}
                         published={post.blog_publish?.split("T")[0]}
-                        views={343} // Consider fetching actual view count if possible
+                        views={
+                          AllBlogViews.filter(
+                            (i) => i.blog_view_post_id == post.blog_id
+                          ).length
+                        } // Consider fetching actual view count if possible
                         title={post.blog_title}
                         details={post.blog_description.slice(0, 100)}
                         author_img={
