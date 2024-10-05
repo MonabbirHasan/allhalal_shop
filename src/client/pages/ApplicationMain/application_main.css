@@ -14,12 +14,12 @@
 
 .ApplicationMain .app_main_wrapper .shop_item_wrapper .arrow_animation {
   transform: translateX(-20px);
-  animation: arrow 5s ease-in-out infinite;
+  /* animation: arrow 5s ease-in-out infinite; */
   font-weight: bolder;
 }
 
 .ApplicationMain .app_main_wrapper .shop_item_wrapper .visit_btn_txt {
-  animation: visit_btn_txt 2s ease-in-out infinite;
+  /* animation: visit_btn_txt 2s ease-in-out infinite; */
 }
 
 @keyframes visit_btn_txt {

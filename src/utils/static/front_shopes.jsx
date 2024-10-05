@@ -88,7 +88,7 @@ export const front_shopes = [
   },
   {
     id: 6,
-    name: "elc store",
+    name: "electronics store",
     icon: "",
     onClick: (e) => {
       return e;
@@ -126,37 +126,7 @@ export const front_shopes = [
     left_icon: <MedicalInformation sx={{ fontSize: ext_size }} />,
     path: "/pharmacy_store",
   },
-  {
-    id: 19,
-    name: "shoes Store",
-    icon: "",
-    onClick: (e) => {
-      return e;
-    },
-    left_icon: <SnowshoeingOutlined sx={{ fontSize: ext_size }} />,
-    path: "/shoes_store",
-  },
-  {
-    id: 20,
-    name: "oil store",
-    icon: "",
-    onClick: (e) => {
-      return e;
-    },
-    left_icon: <OilBarrel sx={{ fontSize: ext_size }} />,
-    path: "/oil_store",
-  },
-
-  {
-    id: 15,
-    name: "Regular Shop",
-    icon: "",
-    onClick: (e) => {
-      return e;
-    },
-    left_icon: <TodaySharp sx={{ fontSize: ext_size }} />,
-    path: "/regular_shop",
-  },
+ 
   {
     id: 16,
     name: "perfume store",

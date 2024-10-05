@@ -1,0 +1,11 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const StoreCategoryController = require("../../controllers/platform_store/store_category.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", StoreCategoryController.all_store_category);
+router.post("/", StoreCategoryController.create_store_category);
+router.get("/:id", StoreCategoryController.single_store_category);
+router.patch("/:id", StoreCategoryController.update_store_category);
+router.delete("/:id", StoreCategoryController.delete_store_category);
+module.exports = router;

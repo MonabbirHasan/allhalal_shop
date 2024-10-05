@@ -1,0 +1,11 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const EarningTaskController = require("../../controllers/earnings/earning_task.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", EarningTaskController.all_earning_task);
+router.post("/", EarningTaskController.create_earning_task);
+router.get("/:id", EarningTaskController.single_earning_task);
+router.patch("/:id", EarningTaskController.update_earning_task);
+router.delete("/:id", EarningTaskController.delete_earning_task);
+module.exports = router;

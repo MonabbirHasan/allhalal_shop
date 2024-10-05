@@ -5,7 +5,7 @@ const dbConfig = {
     user: "root",
     password: "",
     database: "all_halal",
-    connectionLimit: 30000, // Adjust according to your needs
+    connectionLimit: 10, // Adjust according to your needs
 };
 const pool = mysql.createPool(dbConfig);
 

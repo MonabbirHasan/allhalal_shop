@@ -1,0 +1,11 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const PlatformStoreController = require("../../controllers/platform_store/platform_store.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", PlatformStoreController.all_platform_store);
+router.post("/", PlatformStoreController.create_platform_store);
+router.get("/:id", PlatformStoreController.single_platform_store);
+router.patch("/:id", PlatformStoreController.update_platform_store);
+router.delete("/:id", PlatformStoreController.delete_platform_store);
+module.exports = router;

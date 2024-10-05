@@ -1,0 +1,11 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const CoinExchangeRateController = require("../../controllers/financial/coin_exhange_rate.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", CoinExchangeRateController.all_coin_exhange_rate);
+router.post("/", CoinExchangeRateController.create_coin_exhange_rate);
+router.get("/:id", CoinExchangeRateController.single_coin_exhange_rate);
+router.patch("/:id", CoinExchangeRateController.update_coin_exhange_rate);
+router.delete("/:id", CoinExchangeRateController.delete_coin_exhange_rate);
+module.exports = router;

@@ -1,0 +1,11 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const PaymentMethodController = require("../controllers/payment_method.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", PaymentMethodController.all_payment_method);
+router.post("/", PaymentMethodController.create_payment_method);
+router.get("/:id", PaymentMethodController.single_payment_method);
+router.patch("/:id", PaymentMethodController.update_payment_method);
+router.delete("/:id", PaymentMethodController.delete_payment_method);
+module.exports = router;

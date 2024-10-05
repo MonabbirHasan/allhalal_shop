@@ -1,0 +1,16 @@
+.user_wallet_page {
+  padding: 40px 0;
+}
+.user_wallet_page .user_wallet_header {
+  padding: 0;
+}
+.user_wallet_page .user_wallet_header .curent_balance,
+.curent_coins {
+  text-align: center;
+}
+.user_wallet_page .user_wallet_header_card{
+    background:linear-gradient(50deg,#f0f,blue);
+}
+.user_wallet_page .user_wallet_table{
+    padding: 20px 0;
+}

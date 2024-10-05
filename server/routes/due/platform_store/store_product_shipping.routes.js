@@ -1,0 +1,11 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const ProductShippingController = require("../../controllers/platform_store/store_product_shipping.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", ProductShippingController.all_product_shipping);
+router.post("/", ProductShippingController.create_product_shipping);
+router.get("/:id", ProductShippingController.single_product_shipping);
+router.patch("/:id", ProductShippingController.update_product_shipping);
+router.delete("/:id", ProductShippingController.delete_product_shipping);
+module.exports = router;

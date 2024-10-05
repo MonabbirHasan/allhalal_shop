@@ -1,0 +1,12 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const EarnSpinWheelController = require("../../controllers/earnings/earn_spin_wheel.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", EarnSpinWheelController.all_earn_spin_wheel);
+router.post("/", EarnSpinWheelController.create_earn_spin_wheel);
+router.get("/:id", EarnSpinWheelController.single_earn_spin_wheel);
+router.patch("/:id", EarnSpinWheelController.update_earn_spin_wheel);
+router.delete("/:id", EarnSpinWheelController.delete_earn_spin_wheel);
+router.post("/user_sping", EarnSpinWheelController.user_earn_spin_wheel);
+module.exports = router;

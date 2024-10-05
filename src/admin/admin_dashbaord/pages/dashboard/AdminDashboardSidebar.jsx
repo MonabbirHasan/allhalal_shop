@@ -44,7 +44,7 @@ import { shopes } from "../../../../utils/static/shopes";
 import { AuthContext } from "../../../../context/AuthContext";
 const AdminDashboardSidebar = () => {
   const navigate = useNavigate();
-  const { isAuthenticate, logout } = useContext(AuthContext);
+  const { isAuthenticate, logout, AuthUser } = useContext(AuthContext);
   const [OpenBlogs, setOpenBlogs] = useState(false);
   const [StatePage, setStatePage] = useState("admin_dashboard");
   const [OpenAdminDrawer, setOpenAdminDrawer] = useState(false);
@@ -57,6 +57,23 @@ const AdminDashboardSidebar = () => {
     setStatePage(JSON.parse(localStorage.getItem("all_halal_admin_page")));
     if (!isAuthenticate) {
       navigate("/signin");
+    }
+    const user_data = AuthUser.data.user.role;
+    switch (user_data) {
+      case "user":
+        navigate("/my_dashboard");
+        break;
+      case "vendor":
+        navigate("/vendor_dashboard");
+        break;
+      case "advertiser":
+        navigate("/advertisor_dashboard");
+        break;
+      case "admin":
+        navigate("/admin_dashbaord");
+        break;
+      default:
+        break;
     }
   }, [StatePage, isAuthenticate]);
   //HANDLE OPEN DRAWER FUNCTION

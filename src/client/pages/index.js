@@ -10,6 +10,10 @@ export { default as NewsBlog } from "./blogs/Blogs";
 export { default as About } from "./about/About";
 export { default as Tools } from "./tools/Tools";
 export { default as Faq } from "./faq/Faq";
+export { default as Earning } from "./earning/Earning";
+export { default as CustomAds } from "./custom_ads/CustomAds";
+export { default as RewardAds } from "./reward_ads/RewardAds";
+export { default as EarnSubscription } from "./earn_subscription/EarnSubscription";
 // CLOTH STORE
 export { default as ClothHomePage } from "./marketplace/cloth_store/pages/home_page/HomePage";
 // APP STORE
@@ -22,3 +26,5 @@ export {default as BookHomePage} from "./marketplace/book_store/pages/home_page/
 export {default as OnDemandHomePage} from "./marketplace/ondemand_store/pages/home_page/HomePage"
 // HANDMADE CLOTH STORE
 export {default as HandmadeHomePage} from "./marketplace/handemade_store/pages/home_page/HomePage"
+// ELECTRONIC STORE
+export {default as ElcHomePage} from "./marketplace/electronic_store/pages/home_page/HomePage"

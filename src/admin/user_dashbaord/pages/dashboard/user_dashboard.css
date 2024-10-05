@@ -1,0 +1,11 @@
+:root {
+  --color1: #75fbdc;
+  --color2: #78bcfb;
+  --color3: #3148f5;
+  --color4: #15170f;
+  --color5: #f7f7f7;
+  --color6: #ffffff;
+}
+.user_dashboard {
+  padding: 20px 0;
+}

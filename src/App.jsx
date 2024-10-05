@@ -27,6 +27,11 @@ import {
   BookHomePage,
   OnDemandHomePage,
   HandmadeHomePage,
+  ElcHomePage,
+  Earning,
+  CustomAds,
+  RewardAds,
+  EarnSubscription,
 } from "./client/pages/index";
 import {
   UserDashboardSidebar,
@@ -34,6 +39,7 @@ import {
   AdvertisorDashboardSidebar,
   AdminDashboardSidebar,
 } from "./admin/index";
+import { UserWallet } from "./admin/user_dashbaord/index";
 import SignUp from "./authentication/signup/SignUp";
 import SignIn from "./authentication/signin/SignIn";
 import { toast, ToastContainer } from "react-toastify";
@@ -70,12 +76,20 @@ const App = () => {
             <Route path="/news_blog" element={<NewsBlog />} />
             <Route path="/" element={<ApplicationMain />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/contact" element={<Contact />} />
             <Route path="/tools" element={<Tools />} />
             <Route path="/about" element={<About />} />
             <Route path="*" element={<Error404 />} />
             <Route path="/faq" element={<Faq />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="/signin" element={<SignIn />} />
+            {/* EARNING SCREEN */}
+            <Route path="/earning">
+              <Route path="" element={<Earning />} />
+              <Route path="reward-ads" element={<RewardAds />} />
+              <Route path="custom-ads" element={<CustomAds />} />
+              <Route path="subscription" element={<EarnSubscription />} />
+            </Route>
             {/* CLOTH STORE ROUTE START HERE */}
             <Route path="/cloth_store">
               <Route path="" element={<ClothHomePage />} />
@@ -99,6 +113,10 @@ const App = () => {
             {/* ONE DEMAND STORE ROUTE */}
             <Route path="/hand_made_store">
               <Route path="" element={<HandmadeHomePage />} />
+            </Route>
+            {/* ONE DEMAND STORE ROUTE */}
+            <Route path="/elc_store">
+              <Route path="" element={<ElcHomePage />} />
             </Route>
             {/* USER DASHBOARD PAGE ROUTE START HERE */}
             <Route path="/my_dashboard" element={<UserDashboardSidebar />} />

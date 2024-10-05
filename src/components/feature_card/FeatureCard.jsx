@@ -1,16 +1,8 @@
 import React from "react";
 import "./feature_card.css";
-import { Button, SpeedDial, SpeedDialAction, Stack } from "@mui/material";
+import { Button, Stack } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import {
-  ArrowUpward,
-  FormatLineSpacingOutlined,
-  PieChartOutlineSharp,
-  StackedLineChartSharp,
-  SystemUpdate,
-  Traffic,
-  Upcoming,
-} from "@mui/icons-material";
+import { StackedLineChartSharp } from "@mui/icons-material";
 const FeatureCard = (props) => {
   const navigation = useNavigate();
   return (
@@ -51,7 +43,7 @@ const FeatureCard = (props) => {
           props.buttons.map((btn) => {
             return (
               <Button
-                onClick={() => navigation(btn.btn_to)}
+                onClick={btn.onClick}
                 sx={{
                   backgroundColor: btn.btn_bgcolor,
                   color: btn.btn_textcolor,
@@ -59,6 +51,7 @@ const FeatureCard = (props) => {
                     backgroundColor: btn.btn_bgcolor,
                     color: btn.btn_textcolor,
                   },
+                  textTransform: btn.btn_txt_style,
                 }}
                 size={btn.btn_size}
                 variant={btn.btn_variant}

@@ -1,0 +1,37 @@
+.earning-page {
+  padding: 40px 0;
+  /* background: linear-gradient(45deg, #f0f, #00f); */
+  /* height: 100vh; */
+}
+.earning-page .earning_page_wrapper {
+  padding-bottom: 30px;
+}
+.earning-page .lucky_sping {
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.earning-page .lucky_sping .sc-gsTCUz {
+  position: relative;
+}
+.earning-page .sc-gsTCUz > img {
+  display: none !important
+    ;
+}
+.earning-page .sc-gsTCUz::after {
+  content: "";
+  position: absolute;
+  width: 30px;
+  height: 40px;
+  background-color: white;
+  clip-path: polygon(0 0, 100% 0, 52% 100%);
+  z-index: 1;
+  transform: rotate(213deg);
+  top: 45%;
+  left: 20px;
+  right: 8px;
+  margin: auto;
+  border-top-right-radius: 20px;
+  border-top-left-radius: 20px;
+}

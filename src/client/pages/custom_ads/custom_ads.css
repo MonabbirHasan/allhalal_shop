@@ -1,0 +1,18 @@
+.custom_ads {
+  padding: 40px 0;
+}
+.custom_ads .custom_ads_grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+.custom_ad_title {
+  font-size: 16px;
+  text-transform: capitalize;
+  color: #444;
+  padding: 10px;
+  text-align: center;
+}

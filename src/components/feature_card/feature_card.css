@@ -1,6 +1,6 @@
 .feature_card{
     padding: 10px;
-    font-family: cursive;
+    font-family: tahoma;
 }
 .feature_card .feature_card_item{
     padding: 15px;
@@ -11,7 +11,7 @@
 }
 .feature_card .feature_card_item h3{
     text-transform: capitalize;
-    font-size: 20px;
+    font-size: 16px;
     text-align: left;
     color: #444;
     font-weight: normal;

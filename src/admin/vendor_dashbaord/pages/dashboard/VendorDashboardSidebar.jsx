@@ -35,14 +35,14 @@ import {
 import { VendorDashboard } from "../../index";
 import { vendro_shopes } from "../../../../utils/static/vendro_shopes";
 import { AuthContext } from "../../../../context/AuthContext";
-
+import "./vendor_dashboard.css";
 const VendorDashboardSidebar = () => {
   const navigate = useNavigate();
-  const { isAuthenticate, logout } = useContext(AuthContext);
-  const [OpenMarket, setOpenMarket] = useState(false);
-  const [OpenBlogs, setOpenBlogs] = useState(false);
+  const { isAuthenticate, logout, AuthUser } = useContext(AuthContext);
   const [StatePage, setStatePage] = useState("vendor_dashboard");
   const [OpenVendorDrawer, setOpenVendorDrawer] = useState(false);
+  const [OpenMarket, setOpenMarket] = useState(false);
+  const [OpenBlogs, setOpenBlogs] = useState(false);
   //SAVE PAGE STATE TO LOCAL STORAGE
   const SaveState = (pages) => {
     localStorage.setItem("all_halal_vendor_page", JSON.stringify(pages));
@@ -52,6 +52,23 @@ const VendorDashboardSidebar = () => {
     setStatePage(JSON.parse(localStorage.getItem("all_halal_vendor_page")));
     if (!isAuthenticate) {
       navigate("/signin");
+    }
+    const user_data = AuthUser.data.user.role;
+    switch (user_data) {
+      case "user":
+        navigate("/my_dashboard");
+        break;
+      case "vendor":
+        navigate("/vendor_dashboard");
+        break;
+      case "advertiser":
+        navigate("/advertisor_dashboard");
+        break;
+      case "admin":
+        navigate("/admin_dashbaord");
+        break;
+      default:
+        break;
     }
   }, [StatePage, isAuthenticate]);
   //HANDLE OPEN DRAWER FUNCTION

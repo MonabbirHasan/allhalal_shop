@@ -1,0 +1,11 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const ProductFavoritsController = require("../../controllers/platform_store/store_favorits.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", ProductFavoritsController.all_product_favorit);
+router.post("/", ProductFavoritsController.create_product_favorit);
+router.get("/:id", ProductFavoritsController.single_product_favorit);
+router.patch("/:id", ProductFavoritsController.update_product_favorit);
+router.delete("/:id", ProductFavoritsController.delete_product_favorit);
+module.exports = router;

@@ -1,0 +1,12 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const UserCoinController = require("../../controllers/earnings/user_coins.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", UserCoinController.all_user_coin);
+router.post("/", UserCoinController.create_user_coin);
+router.get("/:id", UserCoinController.single_user_coin);
+router.patch("/:id", UserCoinController.update_user_coin);
+router.delete("/:id", UserCoinController.delete_user_coin);
+router.get("/user_coin/:id", UserCoinController.user_coin);
+module.exports = router;

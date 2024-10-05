@@ -1,0 +1,64 @@
+.earn_subscription {
+  padding: 30px 0;
+}
+.earn_subscription .earn_subscription_wrapper {
+  padding: 5px;
+}
+.earn_subscription .earn_subscription_header {
+  padding: 10px 0;
+  padding: 0 10px;
+}
+.earn_subscription .earn_subscription_header .earn_subscription_header_title {
+  font-size: 2rem;
+  text-transform: capitalize;
+  color: #444;
+  letter-spacing: 1px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+.earn_subscription
+  .earn_subscription_header
+  .earn_subscription_header_title_desc {
+  padding: 10px 0;
+  text-transform: capitalize;
+  color: #444;
+  font-size: 14px;
+}
+.earn_subscription .earn_subscription_grid {
+  padding: 10px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.earn_subscription .earn_subscription_grid .earn_sub_card {
+  display: inline-block;
+  padding: 20px;
+  border: 1px solid #cce;
+}
+.earn_subscription .earn_subscription_grid .earn_sub_card .earn_sub_card_title {
+  font-weight: 400;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: #232;
+}
+.earn_subscription .earn_subscription_grid .earn_sub_card .earn_sub_card_price {
+  font-weight: 700;
+  font-size: 2rem;
+  color: #232;
+}
+.earn_subscription .earn_subscription_grid .earn_sub_card .earn_sub_card_list {
+  list-style: none;
+  margin: 0;
+  padding: 10px 0;
+  line-height: 30px;
+}
+.earn_subscription
+  .earn_subscription_grid
+  .earn_sub_card
+  .earn_sub_card_list
+  li {
+  text-transform: capitalize;
+  font-size: 14px;
+  letter-spacing: 1px;
+  color: #232;
+}

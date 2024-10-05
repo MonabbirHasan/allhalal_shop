@@ -1,0 +1,11 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const StoreProductOrderController = require("../../controllers/platform_store/store_product_order.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", StoreProductOrderController.all_store_product_order);
+router.post("/", StoreProductOrderController.create_store_product_order);
+router.get("/:id", StoreProductOrderController.single_store_product_order);
+router.patch("/:id", StoreProductOrderController.update_store_product_order);
+router.delete("/:id", StoreProductOrderController.delete_store_product_order);
+module.exports = router;

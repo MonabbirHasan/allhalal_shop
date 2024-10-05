@@ -1,6 +1,7 @@
 import {
   AppBar,
   Avatar,
+  Badge,
   Box,
   Collapse,
   Divider,
@@ -28,6 +29,11 @@ import {
   LocationOn,
   Logout,
   MonetizationOn,
+  NetworkCell,
+  NetworkCheck,
+  NetworkPingSharp,
+  NetworkWifiRounded,
+  Notifications,
   Person,
   PostAddSharp,
   Settings,
@@ -41,18 +47,22 @@ import {
   BlogViews,
   BlogComment,
   Profile,
+  UserWallet,
 } from "../../index";
 import { user_shopes } from "../../../../utils/static/user_shopes";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import { AuthContext } from "../../../../context/AuthContext";
 import sidebar_ads from "../../../../assets/img/ads.jpg";
+import ReactCurvedText from "react-curved-text";
+import "./user_dashboard.css";
 const UserDashboardSidebar = () => {
-  const { login, isAuthenticate, logout } = useContext(AuthContext);
+  const { isAuthenticate, logout, AuthUser } = useContext(AuthContext);
   const navigate = useNavigate();
   const [OpenMarket, setOpenMarket] = useState(false);
   const [OpenBlogs, setOpenBlogs] = useState(false);
   const [StatePage, setStatePage] = useState("user_dashboard");
   const [OpenUserDrawer, setOpenUserDrawer] = useState(false);
+  const [UserData, setUserData] = useState({});
   //SAVE PAGE STATE TO LOCAL STORAGE
   const SaveState = (pages) => {
     localStorage.setItem("all_halal_user_page", JSON.stringify(pages));
@@ -63,8 +73,25 @@ const UserDashboardSidebar = () => {
     if (!isAuthenticate) {
       navigate("/signin");
     }
+    setUserData(AuthUser.data.user);
+    // const user_data = AuthUser.data.user.role;
+    switch (UserData.role) {
+      case "user":
+        navigate("/my_dashboard");
+        break;
+      case "vendor":
+        navigate("/vendor_dashboard");
+        break;
+      case "advertiser":
+        navigate("/advertisor_dashboard");
+        break;
+      case "admin":
+        navigate("/admin_dashbaord");
+        break;
+      default:
+        break;
+    }
   }, [StatePage, isAuthenticate]);
-
   //////////////////////////////////
   // HANDLE OPEN DRAWER FUNCTION
   //////////////////////////////////
@@ -154,6 +181,10 @@ const UserDashboardSidebar = () => {
     //   navigate(shopes[18].path);
     // };
   }, []);
+  const handleOpenWallet = () => {
+    setStatePage("user_wallet");
+    SaveState("user_wallet");
+  };
   //MENU STYLE
   const styles = {
     menu_style: {
@@ -165,7 +196,7 @@ const UserDashboardSidebar = () => {
     <div className="user_dashboard_sidebar">
       <AppBar position="static">
         <Toolbar sx={{ backgroundColor: "#232" }}>
-          <IconButton
+          {/* <IconButton
             onClick={HandleOpenDrawer}
             size="large"
             edge="start"
@@ -174,7 +205,7 @@ const UserDashboardSidebar = () => {
             sx={{ mr: 2 }}
           >
             <DashboardSharp />
-          </IconButton>
+          </IconButton> */}
           <Typography
             variant="h6"
             component="div"
@@ -183,11 +214,12 @@ const UserDashboardSidebar = () => {
             my dashboard
           </Typography>
           <Box>
-            <IconButton
-              onClick={() => {
-                alert("welcome user dashboard");
-              }}
-            >
+            <IconButton>
+              <Badge color="primary" badgeContent={3}>
+                <Notifications htmlColor="white" />
+              </Badge>
+            </IconButton>
+            <IconButton onClick={HandleOpenDrawer}>
               <Avatar
                 sx={{
                   textTransform: "uppercase",
@@ -195,7 +227,7 @@ const UserDashboardSidebar = () => {
                   background: "#232",
                 }}
               >
-                U
+                {UserData.name && UserData.name[0]}
               </Avatar>
             </IconButton>
           </Box>
@@ -205,6 +237,7 @@ const UserDashboardSidebar = () => {
       <Drawer
         variant="temporary"
         open={OpenUserDrawer}
+        anchor="right"
         sx={{
           "& .MuiDrawer-paper": {
             boxSizing: "border-box",
@@ -264,6 +297,20 @@ const UserDashboardSidebar = () => {
                 <Person fontSize={styles.fontSize} htmlColor="#232" />
               </Typography>
               <Typography style={styles.menu_style}>My Profile</Typography>
+            </ListItemButton>
+          </ListItem>
+          <ListItem disableGutters>
+            <ListItemButton
+              title="social network"
+              onClick={() => {
+                setStatePage("connectify");
+                SaveState("connectify");
+              }}
+            >
+              <Typography mr={1}>
+                <NetworkPingSharp fontSize={styles.fontSize} htmlColor="#232" />
+              </Typography>
+              <Typography style={styles.menu_style}>Connectify</Typography>
             </ListItemButton>
           </ListItem>
           {/* MARKETPLACE START HERE */}
@@ -486,7 +533,7 @@ const UserDashboardSidebar = () => {
       </Drawer>
       {/* RANDER ALL DASHBOARD PAGE HERE */}
       {StatePage === "user_dashboard" ? (
-        <UserDashboard />
+        <UserDashboard handleOpenWallet={handleOpenWallet} />
       ) : StatePage === "user_blogs" ? (
         <UserBlogs />
       ) : StatePage === "user_blogs_view" ? (
@@ -495,6 +542,8 @@ const UserDashboardSidebar = () => {
         <BlogComment />
       ) : StatePage === "my_profile" ? (
         <Profile />
+      ) : StatePage === "user_wallet" ? (
+        <UserWallet />
       ) : (
         "page not found"
       )}

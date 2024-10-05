@@ -1,0 +1,16 @@
+.custom_ads_thumbnail {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.custom_ads_title {
+  text-transform: capitalize;
+  font-size: 16px;
+  color: #333;
+  padding-top: 10px;
+}
+.custom_ads_btn {
+  text-transform: capitalize;
+  width: 100%;
+  margin: 5px;
+}

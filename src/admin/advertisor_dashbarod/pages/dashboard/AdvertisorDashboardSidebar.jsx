@@ -32,7 +32,7 @@ import { AdvertisorDashboard } from "../../index";
 import { AuthContext } from "../../../../context/AuthContext";
 const AdvertisorDashboardSidebar = () => {
   const navigate = useNavigate();
-  const { isAuthenticate, logout } = useContext(AuthContext);
+  const { isAuthenticate, logout, AuthUser } = useContext(AuthContext);
   const [StatePage, setStatePage] = useState("advertisor_dashboard");
   const [OpenAdvertisorDrawer, setOpenAdvertisorDrawer] = useState(false);
   //SAVE PAGE STATE TO LOCAL STORAGE
@@ -44,6 +44,23 @@ const AdvertisorDashboardSidebar = () => {
     setStatePage(JSON.parse(localStorage.getItem("all_halal_advertisor_page")));
     if (!isAuthenticate) {
       navigate("/signin");
+    }
+    const user_data = AuthUser.data.user.role;
+    switch (user_data) {
+      case "user":
+        navigate("/my_dashboard");
+        break;
+      case "vendor":
+        navigate("/vendor_dashboard");
+        break;
+      case "advertiser":
+        navigate("/advertisor_dashboard");
+        break;
+      case "admin":
+        navigate("/admin_dashbaord");
+        break;
+      default:
+        break;
     }
   }, [StatePage, isAuthenticate]);
   //HANDLE OPEN DRAWER FUNCTION

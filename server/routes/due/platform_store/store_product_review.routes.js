@@ -1,0 +1,11 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const ProductReviewController = require("../../controllers/platform_store/store_product_review.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", ProductReviewController.all_product_review);
+router.post("/", ProductReviewController.create_product_review);
+router.get("/:id", ProductReviewController.single_product_review);
+router.patch("/:id", ProductReviewController.update_product_review);
+router.delete("/:id", ProductReviewController.delete_product_review);
+module.exports = router;

@@ -1,0 +1,97 @@
+.elc_card {
+  /* padding: 10px; */
+  /* width: 300px; */
+}
+.elc_card .elc_card_thumbnail {
+  padding: 0;
+  position: relative;
+}
+.elc_card .elc_card_thumbnail .elc_card_price_badge {
+  position: absolute;
+  top: 0;
+  left: 10px;
+  padding: 5px 10px;
+  background-color: #232;
+  display: inline-block;
+  border-bottom-right-radius: 10px;
+  border-bottom-left-radius: 10px;
+}
+.elc_card .elc_card_thumbnail .elc_card_price_badge p {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-size: 14px;
+}
+.elc_card .elc_card_thumbnail .card_thumbnail {
+  padding: 0;
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+}
+.elc_card .elc_card_title {
+  padding: 10px;
+  position: relative;
+}
+.elc_card .elc_card_title h3 {
+   font-size: 16px;
+   font-weight: 600;
+   margin: 0;
+   padding: 0;
+}
+/* elc_card_details */
+.elc_card .elc_card_details {
+  padding: 10px;
+  position: relative;
+}
+.elc_card .elc_card_details p {
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  font-size: 14px;
+  height: 36px;
+  line-height: 18px;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  text-overflow: clip;
+}
+.elc_card .elc_card_stock {
+  padding: 0 10px;
+  display: flex;
+  gap: 10px;
+}
+.elc_card .elc_card_stock span {
+  text-transform: capitalize;
+  font-weight: 500;
+  color: orangered;
+  font-size: 16px;
+  font-family: tahoma;
+}
+
+.elc_card .elc_card_stock span:last-child {
+  text-transform: capitalize;
+  font-weight: 600;
+}
+.elc_card .elc_card_info {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+.elc_card .elc_card_info .elc_card_info_item {
+  padding: 5px;
+  /* background-color: white; */
+  border: 1px dashed white;
+  border-radius: 10px;
+}
+.elc_card .elc_card_info .elc_card_info_item span{
+  text-transform: capitalize;
+  font-size: 14px;
+  color: #444;
+
+}
+.elc_card .elc_card_action {
+  display: flex;
+  align-items: center;
+}

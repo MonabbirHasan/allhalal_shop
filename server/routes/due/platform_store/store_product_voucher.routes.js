@@ -1,0 +1,11 @@
+const express = require("express");
+const authentication = require("../../middleware/authentication");
+const ProductVoucherController = require("../../controllers/platform_store/store_product_voucher.controller");
+const router = express.Router();
+router.use(authentication);
+router.get("/", ProductVoucherController.all_product_voucher);
+router.post("/", ProductVoucherController.create_product_voucher);
+router.get("/:id", ProductVoucherController.single_product_voucher);
+router.patch("/:id", ProductVoucherController.update_product_voucher);
+router.delete("/:id", ProductVoucherController.delete_product_voucher);
+module.exports = router;
